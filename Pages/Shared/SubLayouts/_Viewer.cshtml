@@ -1,0 +1,17 @@
+﻿﻿@{
+    Layout = "_Layout";
+}
+
+<div class="position-relative">
+    @RenderSection("EditorStickyMenu", false)
+    @await Html.PartialAsync("_PageHeader", ViewData)
+    @RenderBody()
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", false)
+}
+
+@section HeadInject {
+    @RenderSection("HeadInject", false)
+}

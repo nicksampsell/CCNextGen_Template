@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CCNextGen_Template</id>
+    <version>1.0.0</version>
+    <authors>CCNextGen_Template</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="602591df0f33efe146d59677ee832e7eea35ffd9" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\bin\Debug\net8.0\CCNextGen_Template.dll" target="lib\net8.0\CCNextGen_Template.dll" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\img\cc_logo.png" target="staticwebassets\img\cc_logo.png" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\bootstrap\css\bootstrap.min.css" target="staticwebassets\lib\bootstrap\css\bootstrap.min.css" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\bootstrap\js\bootstrap.min.js" target="staticwebassets\lib\bootstrap\js\bootstrap.min.js" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\jquery\jquery.js" target="staticwebassets\lib\jquery\jquery.js" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\jquery\jquery.min.js" target="staticwebassets\lib\jquery\jquery.min.js" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\jquery\jquery.min.map" target="staticwebassets\lib\jquery\jquery.min.map" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\jquery\jquery.slim.js" target="staticwebassets\lib\jquery\jquery.slim.js" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\jquery\jquery.slim.min.js" target="staticwebassets\lib\jquery\jquery.slim.min.js" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\jquery\jquery.slim.min.map" target="staticwebassets\lib\jquery\jquery.slim.min.map" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\select2-bootstrap-5-theme.css" target="staticwebassets\lib\select2\css\select2-bootstrap-5-theme.css" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\select2-bootstrap-5-theme.min.css" target="staticwebassets\lib\select2\css\select2-bootstrap-5-theme.min.css" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\select2-bootstrap-5-theme.rtl.css" target="staticwebassets\lib\select2\css\select2-bootstrap-5-theme.rtl.css" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\select2-bootstrap-5-theme.rtl.min.css" target="staticwebassets\lib\select2\css\select2-bootstrap-5-theme.rtl.min.css" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\select2.min.css" target="staticwebassets\lib\select2\css\select2.min.css" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_disabled.scss" target="staticwebassets\lib\select2\css\src\_disabled.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_dropdown.scss" target="staticwebassets\lib\select2\css\src\_dropdown.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_include-all.scss" target="staticwebassets\lib\select2\css\src\_include-all.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_input-group.scss" target="staticwebassets\lib\select2\css\src\_input-group.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_layout.scss" target="staticwebassets\lib\select2\css\src\_layout.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_multiple.scss" target="staticwebassets\lib\select2\css\src\_multiple.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_single.scss" target="staticwebassets\lib\select2\css\src\_single.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_sizing.scss" target="staticwebassets\lib\select2\css\src\_sizing.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_validation.scss" target="staticwebassets\lib\select2\css\src\_validation.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\_variables.scss" target="staticwebassets\lib\select2\css\src\_variables.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\css\src\select2-bootstrap-5-theme.scss" target="staticwebassets\lib\select2\css\src\select2-bootstrap-5-theme.scss" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\wwwroot\lib\select2\js\select2.min.js" target="staticwebassets\lib\select2\js\select2.min.js" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\obj\Debug\net8.0\staticwebassets\msbuild.CCNextGen_Template.Microsoft.AspNetCore.StaticWebAssets.props" target="build\Microsoft.AspNetCore.StaticWebAssets.props" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\obj\Debug\net8.0\staticwebassets\msbuild.build.CCNextGen_Template.props" target="build\CCNextGen_Template.props" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CCNextGen_Template.props" target="buildMultiTargeting\CCNextGen_Template.props" />
+    <file src="L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CCNextGen_Template.props" target="buildTransitive\CCNextGen_Template.props" />
+  </files>
+</package>

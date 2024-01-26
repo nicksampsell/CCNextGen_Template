@@ -1,0 +1,75 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CCNextGen_Template
+build_property.RootNamespace = CCNextGen_Template
+build_property.ProjectDir = L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template
+build_property._RazorSourceGeneratorDebug = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Error/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Error/Error404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JcRXJyb3I0MDQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/LayoutPartials/_PageHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXExheW91dFBhcnRpYWxzXF9QYWdlSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/LayoutPartials/_Pagination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXExheW91dFBhcnRpYWxzXF9QYWdpbmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/LayoutPartials/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXExheW91dFBhcnRpYWxzXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/SubLayouts/_Editor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXFN1YkxheW91dHNcX0VkaXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/SubLayouts/_Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXFN1YkxheW91dHNcX0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/SubLayouts/_Viewer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXFN1YkxheW91dHNcX1ZpZXdlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[L:/Users/Nick/source/repos/CC_Probation_Restitution/CCNextGen_Template/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

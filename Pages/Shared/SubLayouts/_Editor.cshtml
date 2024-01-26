@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Layout";
+}
+@{ await Html.RenderPartialAsync("_PageHeader", ViewData); }
+
+<div class="content">
+    @RenderBody()
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script type="text/javascript" src="~/lib/select2/js/select2.min.js"></script>
+
+    @RenderSection("Scripts", false)
+}
+
+@section HeadInject {
+    @RenderSection("HeadInject", false)
+}

@@ -1,0 +1,3 @@
+﻿#CC NextGen Template
+
+##Installation

@@ -1,0 +1,125 @@
+{
+  "Files": [
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\img\\cc_logo.png",
+      "PackagePath": "staticwebassets\\img\\cc_logo.png"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\bootstrap\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\bootstrap\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\jquery\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\jquery.js"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\jquery\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\jquery.min.js"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\jquery\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\jquery.min.map"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\jquery\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\jquery.slim.js"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\jquery\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\jquery.slim.min.js"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\jquery\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\jquery.slim.min.map"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\select2-bootstrap-5-theme.css",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\select2-bootstrap-5-theme.css"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\select2-bootstrap-5-theme.min.css",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\select2-bootstrap-5-theme.min.css"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\select2-bootstrap-5-theme.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\select2-bootstrap-5-theme.rtl.css"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\select2-bootstrap-5-theme.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\select2-bootstrap-5-theme.rtl.min.css"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\select2.min.css"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_disabled.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_disabled.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_dropdown.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_dropdown.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_include-all.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_include-all.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_input-group.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_input-group.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_layout.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_layout.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_multiple.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_multiple.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_single.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_single.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_sizing.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_sizing.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_validation.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_validation.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\_variables.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\_variables.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\css\\src\\select2-bootstrap-5-theme.scss",
+      "PackagePath": "staticwebassets\\lib\\select2\\css\\src\\select2-bootstrap-5-theme.scss"
+    },
+    {
+      "Id": "L:\\Users\\Nick\\source\\repos\\CC_Probation_Restitution\\CCNextGen_Template\\wwwroot\\lib\\select2\\js\\select2.min.js",
+      "PackagePath": "staticwebassets\\lib\\select2\\js\\select2.min.js"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.CCNextGen_Template.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.CCNextGen_Template.props",
+      "PackagePath": "build\\CCNextGen_Template.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CCNextGen_Template.props",
+      "PackagePath": "buildMultiTargeting\\CCNextGen_Template.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.CCNextGen_Template.props",
+      "PackagePath": "buildTransitive\\CCNextGen_Template.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+	<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+	<Title>Chemung County Next Generation Template</Title>
+	<Authors>Nick Sampsell</Authors>
+	<Company>Chemung County</Company>
+	<RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="wwwroot\**\*" />
+		<Content Remove="wwwroot\css\CCNextGen_Template.css" />
+		<Content Remove="wwwroot\img\twttjrwu.bmp" />
+		<Content Update="**\*.cshtml" Pack="false" />
+	</ItemGroup>
+
+
+</Project>

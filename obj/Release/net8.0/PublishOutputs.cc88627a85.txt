@@ -1,0 +1,3 @@
+L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\bin\Release\net8.0\publish\CCNextGen_Template.dll
+L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\bin\Release\net8.0\publish\CCNextGen_Template.deps.json
+L:\Users\Nick\source\repos\CC_Probation_Restitution\CCNextGen_Template\bin\Release\net8.0\publish\CCNextGen_Template.pdb

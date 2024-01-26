@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "_Layout";
+    string search = Context.Request.Query["search"].ToString();
+}
+@{
+    await Html.RenderPartialAsync("_PageHeader", ViewData);
+}
+
+<div class="row mb-3 bg-secondary-subtle p-3 rounded border border-secondary-subtle border-1 shadow-sm">
+    <div class="col">
+        <form method="get" class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-start align-items-center gap-3 flex-grow-1">
+                    <label for="searchField" class="form-label m-0 p-0">Search</label>
+                    <input type="text" id="searchField" name="search" value="@search" class="form-control w-25" />
+                    <input type="submit" class="btn btn-primary" value="Search" />
+            </div>
+            @if (!String.IsNullOrEmpty(search))
+            {
+                <a asp-action="Index">View All Results</a>
+            }
+        </form>
+    </div>
+</div>
+<div class="relative overflow-x-auto">
+        @RenderBody()
+
+        @{
+            var totalItemsProperty = ViewData.Model?.GetType().GetProperty("TotalItems");
+        }
+
+        @if (totalItemsProperty != null)
+        {
+            <Partial name="_Pagination" model="ViewData.Model" />
+        }
+
+
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", false)
+    <script type="text/javascript">
+        function setQueryParameters(e) {
+            e.preventDefault();
+            const url = new URL(window.location.href);
+            url.searchParams.set('perPage', e.target.value);
+            window.location = url;
+        }
+    </script>
+}

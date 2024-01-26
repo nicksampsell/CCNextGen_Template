@@ -1,0 +1,33 @@
+﻿#wrapper {
+    min-height: 100vh;
+}
+.material-symbols-rounded {
+    min-width: 24px;
+    max-width: 24px;
+    overflow: hidden;
+    font-display: block;
+}
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
