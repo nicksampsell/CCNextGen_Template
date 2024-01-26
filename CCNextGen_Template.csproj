@@ -11,6 +11,8 @@
 	<Company>Chemung County</Company>
 	<RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +24,13 @@
 		<Content Remove="wwwroot\css\CCNextGen_Template.css" />
 		<Content Remove="wwwroot\img\twttjrwu.bmp" />
 		<Content Update="**\*.cshtml" Pack="false" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Readme.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 
