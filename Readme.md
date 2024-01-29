@@ -1,4 +1,5 @@
 ﻿
+
 # CC NextGen Template
 
 ## Installation
@@ -19,6 +20,14 @@ builder.Services.ConfigureOptions(typeof(UIConfigureOptions));
 builder.Services.AddRazorPages(); //if it is not already there
 
 app.MapRazorPages();
+```
+
+## Add .AddCustomRazorConfiguration() Extension Methods
+Add the .AddCustomRazorConfiguration() method to both the **.AddControllerWithViews()** and **.AddRazorPages()** in your startup code. This will allow the partials to render properly.
+```
+builder.services.AddControllersWithViews().AddCustomRazorConfiguration();
+
+builder.services.AddRazorPages().AddCustomRazorConfiguration();
 ```
 
 

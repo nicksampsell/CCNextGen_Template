@@ -8,7 +8,7 @@
 		<Authors>Nick Sampsell</Authors>
 		<Company>Chemung County</Company>
     <Description>The bootstrap-based template used by Chemung County for the internal apps turned into a Razor Class Library for easier integration into future proejcts</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.5</Version>
 		<RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -25,32 +25,54 @@
     <IncludeRazorContentInPack>false</IncludeRazorContentInPack>
     
     <EnableDefaultRazorGenerateItems>true</EnableDefaultRazorGenerateItems>
-
     <ExcludeConfigFilesFromBuildOutput>true</ExcludeConfigFilesFromBuildOutput>
     <Configurations>Debug;Release;Publish</Configurations>
+    <AssemblyName>CCNextGen_Template</AssemblyName>
+    <PackageId>CCNextGen_Template</PackageId>
+    <Product>CCNextGen_Template</Product>
     
     
 		</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Publish|AnyCPU'">
-    <!-- Sign the assembly and NuGet pack only if in Publish configuration -->
-    <SignAssembly>true</SignAssembly>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
   
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <EmbeddedResource Include="wwwroot\**\*" />
+    <Content Update="**\*.cshtml" Pack="false">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+      <Content Remove="wwwroot\img\twttjrwu.bmp" />
   </ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Include="wwwroot\**\*" />
-    <Content Update="**\*.cshtml" Pack="false" />
-		<Content Remove="wwwroot\img\twttjrwu.bmp" />
-		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.1" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="wwwroot\css\CCNextGen_Template.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\img\cc_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\lib\bootstrap\css\bootstrap.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\lib\bootstrap\js\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\lib\select2\css\select2-bootstrap-5-theme.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\lib\select2\css\select2.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\lib\select2\js\select2.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 
 	<ItemGroup>
 	  <None Update="Readme.md">

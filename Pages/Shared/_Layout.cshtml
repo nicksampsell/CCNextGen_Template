@@ -10,16 +10,16 @@
 
     <title>@ViewData["Title"] - @(Configuration.GetSection("TemplateConfiguration")["AppFullName"] ?? "")</title>
 
-    <link rel="icon" href="@(Configuration.GetSection("TemplateConfiguration")["Favicon"] ?? "_content/CCNextGen_Template/img/favicon.ico")" type="image/x-icon" />
-    <link rel="shortcut icon" href="@(Configuration.GetSection("TemplateConfiguration")["Favicon"] ?? "_content/CCNextGen_Template/img/favicon.ico")" type="image/x-icon" />
-    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/lib/select2/css/select2.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/lib/select2/css/select2-bootstrap-5-theme.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/css/CCNextGen_Template.css" asp-append-version="true" />
+    <link rel="icon" href="@(Configuration.GetSection("TemplateConfiguration")["Favicon"] ?? "~/img/favicon.ico")" type="image/x-icon" />
+    <link rel="shortcut icon" href="@(Configuration.GetSection("TemplateConfiguration")["Favicon"] ?? "~/img/favicon.ico")" type="image/x-icon" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css"/>
+    <link rel="stylesheet" href="~/lib/select2/css/select2-bootstrap-5-theme.min.css"/>
+    <link rel="stylesheet" href="~/css/CCNextGen_Template.css"/>
     @await RenderSectionAsync("HeadInject", required: false)
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/site.css"/>
 
 
 
