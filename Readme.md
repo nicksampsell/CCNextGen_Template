@@ -1,12 +1,27 @@
-﻿# CC NextGen Template
+﻿
+# CC NextGen Template
 
 ## Installation
 1. Download the template and link it to your project.  
-	- Use Nuget 
-	- Add the library to your solution.  Then, for your main project, right click "Dependencies" in the Solution Explorer and choose "Add Dependency" and choose CCNextGen_Template.
-2. Delete or rename the default **_Layout.cshtml** file (this is what the template uses and local files override the template)
-3. Add the configuration items from the section below to your **appsettings.json** file
-4. Add additional partials to add items to the sidebar or top menu based on the options in the sections below.
+2. Add the necessary code to **Program.cs** to allow the library to run.
+3. Delete or rename the default **_Layout.cshtml** file (this is what the template uses and local files override the template)
+4. Add the configuration items from the section below to your **appsettings.json** file
+5. Add additional partials to add items to the sidebar or top menu based on the options in the sections below.
+
+## Program.cs
+```
+using CCNextGen_Template;
+
+builder.WebHost.UseWebRoot("wwwroot");
+builder.WebHost.UseStaticWebAssets();
+
+builder.Services.ConfigureOptions(typeof(UIConfigureOptions));
+builder.Services.AddRazorPages(); //if it is not already there
+
+app.MapRazorPages();
+```
+
+
 
 ## Appsettings.json
 Add the following to appsettings.json
