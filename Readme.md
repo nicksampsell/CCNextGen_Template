@@ -1,6 +1,12 @@
 ﻿
 
+
 # CC NextGen Template
+
+
+## Note
+Please visit the [Source Repository on Github](https://github.com/nicksampsell/CCNextGen_Template) for the most up-to-date documentation.
+
 
 ## Installation
 1. Download the template and link it to your project.  
@@ -25,9 +31,9 @@ app.MapRazorPages();
 ## Add .AddCustomRazorConfiguration() Extension Methods
 Add the .AddCustomRazorConfiguration() method to both the **.AddControllerWithViews()** and **.AddRazorPages()** in your startup code. This will allow the partials to render properly.
 ```
-builder.services.AddControllersWithViews().AddCustomRazorConfiguration();
+builder.Services.AddControllersWithViews().AddCustomRazorConfiguration();
 
-builder.services.AddRazorPages().AddCustomRazorConfiguration();
+builder.Services.AddRazorPages().AddCustomRazorConfiguration();
 ```
 
 
@@ -184,4 +190,36 @@ e.g., /views/users/index.cshtml
 <table class="table table-striped">
 ...rest of code...
 </table>
+```
+
+
+
+## Layout Partial Samples
+
+### _Sidebar.cshtml
+The sidebar makes use of Bootstrap pills and Material Icons.  Below is an example of what the file may look like
+```
+<hr />
+<ul class="nav nav-pills flex-column mb-auto flex-grow-1">
+	<li>
+	    <a asp-area="" asp-controller="Home" asp-action="Create"
+	       class="nav-link text-white @Html.ActiveClass(controller: "Home", action: "Index", cssClass: "active")">
+	        <div class="d-flex justify-content-start align-items-center g-2">
+	            <i class="material-symbols-outlined me-2">home</i>
+	            <span class="text-nowrap flex-grow-1">Home</span>
+	        </div>
+	    </a>
+	</li>
+</ul>
+```
+
+### Additional Notes
+To use the Yellow pill highlighting in the sidebar, add the following CSS to your stylesheet. (It is used on a per-app basis, so it is not enabled by default).
+
+```
+.nav-pills .nav-link.active
+{
+    background-color: #ECC435 !important;
+    color: black !important;
+}
 ```
