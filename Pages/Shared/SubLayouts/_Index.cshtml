@@ -21,20 +21,16 @@
         </form>
     </div>
 </div>
-<div class="relative overflow-x-auto">
-        @RenderBody()
+@RenderBody()
 
-        @{
-            var totalItemsProperty = ViewData.Model?.GetType().GetProperty("TotalItems");
-        }
+@{
+    var totalItemsProperty = ViewData.Model?.GetType().GetProperty("TotalItems");
+}
 
-        @if (totalItemsProperty != null)
-        {
-            <Partial name="_Pagination" model="ViewData.Model" />
-        }
-
-
-</div>
+@if (totalItemsProperty != null)
+{
+    <Partial name="_Pagination" model="ViewData.Model" />
+}
 
 @section Scripts {
     @RenderSection("Scripts", false)
