@@ -25,6 +25,8 @@ namespace CCNextGen_Template
                 opt.PageViewLocationFormats.Add("/Pages/Shared/SubLayouts/{0}" + RazorViewEngine.ViewExtension);
                 opt.AreaPageViewLocationFormats.Add("/Pages/Shared/LayoutPartials/{0}" + RazorViewEngine.ViewExtension);
                 opt.AreaPageViewLocationFormats.Add("/Pages/Shared/SubLayouts/{0}" + RazorViewEngine.ViewExtension);
+                opt.ViewLocationFormats.Add("/Pages/Shared/LayoutPartials/{0}" + RazorViewEngine.ViewExtension);
+                opt.ViewLocationFormats.Add("/Pages/Shared/SubLayouts/{0}" + RazorViewEngine.ViewExtension);
             });
         }
     }

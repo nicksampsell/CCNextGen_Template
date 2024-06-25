@@ -1,14 +1,18 @@
 ﻿@{
     Layout = "_Layout";
 }
-@{ await Html.RenderPartialAsync("_PageHeader", ViewData); }
+@{
+    await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
+}
 
 <div class="content">
     @RenderBody()
 </div>
 
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    @{
+        await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_ValidationScriptsPartial.cshtml");
+    }
     <script type="text/javascript" src="/lib/select2/js/select2.min.js"></script>
 
     @RenderSection("Scripts", false)
