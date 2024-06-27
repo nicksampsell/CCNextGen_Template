@@ -3,7 +3,7 @@
     string search = Context.Request.Query["search"].ToString().Trim();
 }
 @{
-    await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
+    await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
 }
 @if (!ViewData.ContainsKey("HideSearch"))
 {
@@ -35,8 +35,7 @@
 
 @if (totalItemsProperty != null)
 {
-
-    await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_Pagination.cshtml", ViewData);
+    @await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_Pagination.cshtml",ViewData)
 }
 
 @section Scripts {
