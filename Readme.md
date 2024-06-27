@@ -1,7 +1,4 @@
-﻿
-
-
-# CC NextGen Template
+﻿# CC NextGen Template
 
 
 ## Note
@@ -36,7 +33,12 @@ builder.Services.AddControllersWithViews().AddCustomRazorConfiguration();
 builder.Services.AddRazorPages().AddCustomRazorConfiguration();
 ```
 
-
+## Add items to _ViewImports.cshtml
+Add the following items to your _ViewImports.cshtml file
+```
+@using CCNextGen_Template.Helpers
+@using CCNextGen_Template.Models
+```
 
 ## Appsettings.json
 Add the following to appsettings.json
@@ -100,13 +102,18 @@ To add additional buttons, you can create a list of *AdditionalLink* objects:
 
 ```
 ViewData["AdditionalLinks"] = new List<AdditionalLinks> {
-	new AdditionalLink {
+	new AdditionalLinks {
+		Page = "/Folder/MyRazorPage",
+		Title = "My Page Title",
+		Handler = "post" //you normally do this, but this is for demonstration purposes
+	},
+	new AdditionalLinks {
 		Url = "http://google.com",
 		Title = "Google",
 		ClassName = "btn btn-secondary",
 		IdName = "googleButton",
 	},
-	new AdditionalLink {
+	new AdditionalLinks {
 		Area = "Admin",
 		Controller = "Users",
 		Action = "Edit",
@@ -130,6 +137,8 @@ ViewData["AdditionalLinks"] = new List<AdditionalLinks> {
 | ClassName | Class used when rendering button | no
 | IdName | Id used for rendering button | no
 | Icon | Icon used for button.  Uses [Material Icons](https://fonts.google.com/icons) names | no
+| Page | Point to a Razor Pages link using asp-page syntax. | no**
+| Handler | Override Razor Page Handler.  In most cases, GET is used.
 
 \* Either URL or asp-based routing needs to be used for the button
 
@@ -192,6 +201,78 @@ e.g., /views/users/index.cshtml
 </table>
 ```
 
+#### Enabling Pagination
+Pagination in the template requires [Pagination.EntityFrameworkCore.Extensions](https://github.com/SitholeWB/Pagination.EntityFrameworkCore.Extensions).    The template looks for the property **TotalItems** in the model before displaying the Pagination links.  The pagination links use the following query variables:
+
+| variable | purpose | suggested default |
+| -- | -- | -- |
+| search | when used in conjunction with search box, keeps value when paging. | "" (empty string) |
+| page | current page number | 1 |
+| perPage | how many items per page | 100 |
+| sortBy | what column to sort by | null
+| desc | whether to sort in descending order | true |
+
+In an MVC controller, an action make look like this:
+
+
+```
+public async Task<IActionResult> Index(string search="", int page = 1, int perPage=100, string sortBy = "ItemId", bool desc = true)
+{
+	//your code that is able to search for using the passed in data.
+	//be sure to use Pagination.EntityFrameworkCore.Extensions 
+	//and return the results to the view.	
+	
+	var results = ;
+
+	ViewData["Search"] = search;
+	ViewData["PerPage"] = perPage;
+	ViewData["Page"] = page;
+	ViewData["SortBy"] = sortBy;
+	ViewData["Desc"] = desc;
+	return View(await _context.FictionalTable.AsPaginationAsync(page, perPage, sortBy, desc));
+}
+```
+
+For pagination, it is critical that you include the following items to ensure the pagination links render properly.
+
+**ViewData["PerPage"] = perPage;**
+**ViewData["Page"] = page;**
+**ViewData["SortBy"] = sortBy;**
+**ViewData["Desc"] = desc;**
+
+
+
+
+#### Enabling Search
+The search box that is part of the SubLayouts/_Index template uses a GET form that sets the content in the search field to a parameter called search, so when pressing the search button, your url will have the following added to it ?search=SEARCH+QUERY+DATA.
+
+To access it in your code, modify your function parameters to include a nullable string called search with an empty string as a default.  A an MVC project that uses pagination and the search function may look like this:
+
+```
+public async Task<IActionResult> Index(string search="", int page = 1, int perPage=100, string sortBy = "ItemId", bool desc = true)
+{
+	//your code that is able to search for using the passed in data.
+	//be sure to use Pagination.EntityFrameworkCore.Extensions 
+	//and return the results to the view.	
+
+	ViewData["Search"] = search;
+	ViewData["PerPage"] = perPage;
+	ViewData["Page"] = page;
+	ViewData["SortBy"] = sortBy;
+	ViewData["Desc"] = desc;
+	return View(result);
+}
+```
+
+It is important the the **ViewData["search"]** variable is set with the passed in search variable to repopulate the 
+
+
+#### Hiding Search
+If you do not want the search box to appear on your index page when using the SubLayouts/_Index template, add the following to your RazorView
+
+```
+ViewData["HideSearch"] = true;
+```
 
 
 ## Layout Partial Samples
@@ -223,3 +304,28 @@ To use the Yellow pill highlighting in the sidebar, add the following CSS to you
     color: black !important;
 }
 ```
+
+### Overriding Templates
+If you want to override any of the templates, take note of the CCNextGen_Template's file structure.  In your own project, recreate the bolded file structure and make a copy of the template you wish to override.
+
+* **Pages**
+	* _ViewImports.cshtml
+	* _ViewStart.cshtml
+	* **Shared**
+		* _Layout.cshtml
+		* **LayoutPartials**
+			* _PageHeader.cshtml
+			* _Pagination.cshtml
+			* _ValidationScriptsPartial.cshtml
+		* **SubLayouts**
+			* _Editor.cshtml
+			* _Index.cshtml
+			* _Viewer.cshtml
+
+For example, if you want to override the page header, you would create the following folder structure:
+
+* Pages
+	* Shared
+		* LayoutPartials
+
+then inside the **LayoutPartials** folder, you would place a copy of the _PageHeader.cshtml file from the original project into this folder (see the [GitHub Repository](https://github.com/nicksampsell/CCNextGen_Template) for the latest source code).

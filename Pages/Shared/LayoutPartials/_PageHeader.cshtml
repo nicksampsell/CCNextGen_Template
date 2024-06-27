@@ -10,6 +10,7 @@
         @if (ViewBag.HideButton == null || ViewBag.HideButton != true)
         {
             <div class="shrink mb-0 -pb-1">
+                <div class="d-flex justify-content-end align-items-center gap-2">
                 @if (ViewContext.RouteData.Values["page"] != null)
                 {
                     if ((ViewContext.RouteData.Values["page"] != null && ViewContext.RouteData.Values["page"].ToString().ToLower().Contains("/index") || ViewData.ContainsKey("ShowCreateButton")))
@@ -40,7 +41,7 @@
                         </a>
                     }
                 }
-
+                </div>
 
             </div>
         }
@@ -48,11 +49,12 @@
         @if (ViewData.ContainsKey("AdditionalLinks"))
         {
             <div class="shrink mb-0 -pb-1">
+                <div class="d-flex justify-content-end align-items-center gap-2">
                 @foreach (var link in ((List<AdditionalLinks>)ViewData["AdditionalLinks"]))
                 {
-                    @if (string.IsNullOrEmpty(link.Url))
+                    @if (string.IsNullOrEmpty(link.Url) && string.IsNullOrEmpty(link.Page))
                     {
-                        <a class="@(!string.IsNullOrEmpty(link.ClassName) ? link.ClassName : "btn btn-primary has-icon")" asp-area="@link.Area" asp-controller="@link.Controller" asp-action="@link.Action" asp-all-route-data="@link.Data" id="@(!string.IsNullOrEmpty(link.IdName) ? link.IdName : Guid.NewGuid)">
+                            <a class="@(!string.IsNullOrEmpty(link.ClassName) ? link.ClassName : "btn btn-primary has-icon")" asp-area="@link.Area" asp-controller="@link.Controller" asp-action="@link.Action" asp-all-route-data="@link.Data" id="@(!string.IsNullOrEmpty(link.IdName) ? link.IdName : Guid.NewGuid().ToString("N"))">
                             @if (!string.IsNullOrEmpty(link.Icon))
                             {
                                 <i class="material-symbols-rounded material-symbols-outlined me-1">@link.Icon</i>
@@ -60,9 +62,20 @@
                             <span>@link.Title</span>
                         </a>
                     }
-                    else
+                    else if(!string.IsNullOrEmpty(link.Page))
                     {
-                        <a class="@(!string.IsNullOrEmpty(link.ClassName) ? link.ClassName : "btn btn-primary has-icon")" href="@link.Url" id="@(!string.IsNullOrEmpty(link.IdName) ? link.IdName : Guid.NewGuid)">
+                        @link.Page
+                        <a class="@(!string.IsNullOrEmpty(link.ClassName) ? link.ClassName : "btn btn-primary has-icon")" asp-page-handler="@(!string.IsNullOrEmpty(link.Handler) ? link.Handler : null)" asp-all-route-data="@link.Data" asp-page="@link.Page" id="@(!string.IsNullOrEmpty(link.IdName) ? link.IdName : Guid.NewGuid().ToString("N")))">
+                            @if (!string.IsNullOrEmpty(link.Icon))
+                            {
+                                <i class="material-symbols-rounded material-symbols-outlined me-1">@link.Icon</i>
+                            }
+                            <span>@link.Title</span>
+                        </a>
+                    }
+                    else if(!string.IsNullOrEmpty(link.Url))
+                    {
+                        <a class="@(!string.IsNullOrEmpty(link.ClassName) ? link.ClassName : "btn btn-primary has-icon")" href="@link.Url" id="@(!string.IsNullOrEmpty(link.IdName) ? link.IdName : Guid.NewGuid().ToString("N"))">
                             @if (!string.IsNullOrEmpty(link.Icon))
                             {
                                 <i class="material-symbols-rounded material-symbols-outlined me-1">@link.Icon</i>
@@ -71,6 +84,7 @@
                         </a>
                     }
                 }
+                </div>
             </div>
         }
     </div>

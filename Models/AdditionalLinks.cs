@@ -11,6 +11,8 @@
         public string? ClassName { get; set; }
         public string? IdName { get; set; }
         public string? Icon { get; set; }
+        public string? Page { get; set; }
+        public string? Handler { get; set; }
 
     }
 }
