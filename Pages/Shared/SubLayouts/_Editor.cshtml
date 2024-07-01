@@ -2,7 +2,7 @@
     Layout = "_Layout";
 }
 @{
-    await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
+    await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
 }
 
 <div class="content">

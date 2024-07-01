@@ -1,9 +1,19 @@
 ﻿@using CCNextGen_Template.Helpers
 @using CCNextGen_Template.Models
+@{
+    var currentPage = ViewContext.RouteData.Values["page"] as string;
+}
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <header class="d-flex flex-row justify-content-between align-items-center  mb-3">
     <div class="grow">
-        <a asp-action="Index" style="color: rgb(33, 37, 41); text-decoration: none"><h1 class="display-3">@ViewData["Title"]</h1></a>
+        @if(!string.IsNullOrEmpty(currentPage))
+        {
+            <a asp-page="@currentPage" style="color: rgb(33, 37, 41); text-decoration: none"><h1 class="display-3">@ViewData["Title"]</h1></a>
+        }
+        else
+        {
+            <a asp-controller="@ViewContext.RouteData.Values["controller"]" asp-action="@ViewContext.RouteData.Values["action"]" style="color: rgb(33, 37, 41); text-decoration: none"><h1 class="display-3">@ViewData["Title"]</h1></a>
+        }
     </div>
 
     <div class="d-flex flex-row align-items-center gap-3">

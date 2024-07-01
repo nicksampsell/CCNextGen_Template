@@ -31,3 +31,31 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+&:active,
+&:focus {
+    color: var(--btn-outline-active-color);
+    border-color: var(--btn-outline-active-color);
+}
+
+}
+
+.btn-outline-tertiary {
+    --btn-outline-color: var( --bs-tertiary-color);
+    --btn-outline-hover-color: tint(var( --bs-tertiary-color), 10%);
+    --btn-outline-active-color: shade(var( --bs-tertiary-color), 10%);
+    color: var( --bs-tertiary-color);
+    border-color: var( --bs-tertiary-color);
+    background-color: transparent;
+    &:hover
+
+{
+    color: var( --bs-secondary-color);
+    border-color: var( --bs-secondary-color);
+}
+
+&:active,
+&:focus {
+    color: var( --bs-secondary-color);
+    border-color: var( --bs-secondary-color);
+}
+}

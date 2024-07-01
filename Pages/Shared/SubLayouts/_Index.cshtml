@@ -3,7 +3,7 @@
     string search = Context.Request.Query["search"].ToString().Trim();
 }
 @{
-    await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
+    await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
 }
 @if (!ViewData.ContainsKey("HideSearch"))
 {
@@ -14,16 +14,17 @@
                     <label for="searchField" class="col-sm-2 col-form-label">Search</label>
                     <div class="col-sm-10">
                         <div class="input-group">
-                            <input type="text" id="searchField" name="search" value="@search" class="form-control w-25" />
+                            <input type="text" id="searchField" name="search" value="@search" class="form-control w-25">
                             <input type="submit" class="btn btn-primary" value="Search" />
+
                         </div>
                     </div>
                 </div>
-                @if (!String.IsNullOrEmpty(search))
-                {
-                    <a asp-action="Index">View All Results</a>
-                }
             </form>
+            @if (!String.IsNullOrEmpty(search))
+            {
+                <a asp-route-perPage="@ViewData["PerPage"]" asp-route-page="@ViewData["Page"]" class="d-block w-100 text-center btn btn-outline-tertiary">View All Results</a>
+            }
         </div>
     </div>
 }
