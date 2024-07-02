@@ -23,7 +23,7 @@ namespace CCNextGen_Template.Helpers
 			var acceptedActions = (action ?? currentAction ?? "").Split(',');
 			var acceptedPages = (page ?? currentPage ?? "").Split(',');
 
-			if(currentPage != null)
+			if(currentPage != null && string.IsNullOrEmpty(controller))
 			{
                 bool isPageMatch = false;
 
@@ -46,12 +46,12 @@ namespace CCNextGen_Template.Helpers
                 }
 
                 return (acceptedAreas != null ? acceptedAreas.Contains(currentArea) : true) &&
-					acceptedPages.Contains(currentPage) || isPageMatch ? cssClass : hiddenClass;
+					acceptedPages.Contains(currentPage) || isPageMatch ? $"{cssClass} as-page" : hiddenClass;
             }
 
             return (acceptedAreas != null ? acceptedAreas.Contains(currentArea) : true) && 
 					acceptedControllers.Contains(currentController) && 
-					acceptedActions.Contains(currentAction) ? cssClass : hiddenClass;
+					acceptedActions.Contains(currentAction) ? $"{cssClass} as-controller" : hiddenClass;
 		}
 
         [Obsolete("ActiveExpandContract is deprecated.  Use ActiveClass() with hiddenClass parameter instead.", true)]

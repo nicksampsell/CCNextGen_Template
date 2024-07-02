@@ -8,7 +8,7 @@
 		<Authors>Nick Sampsell</Authors>
 		<Company>Chemung County</Company>
     <Description>The bootstrap-based template used by Chemung County for the internal apps turned into a Razor Class Library for easier integration into future proejcts</Description>
-    <Version>1.0.74</Version>
+    <Version>1.0.76</Version>
 		<RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -44,7 +44,13 @@
     </Content>
       <Content Remove="wwwroot\img\twttjrwu.bmp" />
       <Content Remove="wwwroot\lib\bootstrap\js\popper.min.js" />
+      <Content Remove="_ViewImports.cshtml" />
+      <Content Remove="_ViewStart.cshtml" />
   </ItemGroup>
+
+  
+
+
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -57,20 +63,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Helpers\EnumExtensions.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="RazorConfigureExtensions.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="UIConfigureOptions.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Pages\Error\Error.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Pages\Error\Error404.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Pages\Shared\Error.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="Pages\Shared\LayoutPartials\_PageHeader.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -84,9 +87,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Pages\Shared\SubLayouts\_Index.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Pages\Shared\SubLayouts\_Viewer.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Pages\Shared\_Layout.cshtml">

@@ -12,8 +12,11 @@ namespace CCNextGen_Template
             {
                 opt.AreaViewLocationFormats.Add("/Pages/Shared/LayoutPartials/{0}" + RazorViewEngine.ViewExtension);
                 opt.AreaViewLocationFormats.Add("/Pages/Shared/SubLayouts/{0}" + RazorViewEngine.ViewExtension);
+                opt.AreaViewLocationFormats.Add("/Pages/Shared/{0}" + RazorViewEngine.ViewExtension);
+                opt.ViewLocationFormats.Add("/Pages/Shared/{0}" + RazorViewEngine.ViewExtension);
                 opt.ViewLocationFormats.Add("/Pages/Shared/LayoutPartials/{0}" + RazorViewEngine.ViewExtension);
                 opt.ViewLocationFormats.Add("/Pages/Shared/SubLayouts/{0}" + RazorViewEngine.ViewExtension);
+
             });
         }
 
@@ -21,6 +24,9 @@ namespace CCNextGen_Template
         {
             return services.Configure<RazorViewEngineOptions>(opt =>
             {
+                opt.PageViewLocationFormats.Add("/Pages/Shared/{0}" + RazorViewEngine.ViewExtension);
+                opt.AreaPageViewLocationFormats.Add("/Pages/Shared/{0}" + RazorViewEngine.ViewExtension);
+                opt.ViewLocationFormats.Add("/Pages/Shared/{0}" + RazorViewEngine.ViewExtension);
                 opt.PageViewLocationFormats.Add("/Pages/Shared/LayoutPartials/{0}" + RazorViewEngine.ViewExtension);
                 opt.PageViewLocationFormats.Add("/Pages/Shared/SubLayouts/{0}" + RazorViewEngine.ViewExtension);
                 opt.AreaPageViewLocationFormats.Add("/Pages/Shared/LayoutPartials/{0}" + RazorViewEngine.ViewExtension);
