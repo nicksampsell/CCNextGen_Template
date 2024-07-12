@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -9,22 +10,22 @@ using System.Web;
 
 namespace CCNextGen_Template.Helpers
 {
-	public static class CCExtensions
-	{
-		public static string? ActiveClass(this IHtmlHelper htmlHelper, string? area = null, string? controller = null, string? action = null, string? page = null, string? cssClass = "active", string? hiddenClass = "")
-		{
-			var currentArea = htmlHelper?.ViewContext.RouteData.Values["area"] as string;
-			var currentController = htmlHelper?.ViewContext.RouteData.Values["controller"] as string;
-			var currentAction = htmlHelper?.ViewContext.RouteData.Values["action"] as string;
-			var currentPage = htmlHelper?.ViewContext.RouteData.Values["page"] as string;
+    public static class CCExtensions
+    {
+        public static string? ActiveClass(this IHtmlHelper htmlHelper, string? area = null, string? controller = null, string? action = null, string? page = null, string? cssClass = "active", string? hiddenClass = "")
+        {
+            var currentArea = htmlHelper?.ViewContext.RouteData.Values["area"] as string;
+            var currentController = htmlHelper?.ViewContext.RouteData.Values["controller"] as string;
+            var currentAction = htmlHelper?.ViewContext.RouteData.Values["action"] as string;
+            var currentPage = htmlHelper?.ViewContext.RouteData.Values["page"] as string;
 
-			var acceptedAreas = (!String.IsNullOrEmpty(area)) ? area.Split(',') : null;
-			var acceptedControllers = (controller ?? currentController ?? "").Split(',');
-			var acceptedActions = (action ?? currentAction ?? "").Split(',');
-			var acceptedPages = (page ?? currentPage ?? "").Split(',');
+            var acceptedAreas = (!String.IsNullOrEmpty(area)) ? area.Split(',') : null;
+            var acceptedControllers = (controller ?? currentController ?? "").Split(',');
+            var acceptedActions = (action ?? currentAction ?? "").Split(',');
+            var acceptedPages = (page ?? currentPage ?? "").Split(',');
 
-			if(currentPage != null && string.IsNullOrEmpty(controller))
-			{
+            if (currentPage != null && string.IsNullOrEmpty(controller))
+            {
                 bool isPageMatch = false;
 
                 foreach (var acceptedPage in acceptedPages)
@@ -46,13 +47,13 @@ namespace CCNextGen_Template.Helpers
                 }
 
                 return (acceptedAreas != null ? acceptedAreas.Contains(currentArea) : true) &&
-					acceptedPages.Contains(currentPage) || isPageMatch ? $"{cssClass} as-page" : hiddenClass;
+                    acceptedPages.Contains(currentPage) || isPageMatch ? $"{cssClass} as-page" : hiddenClass;
             }
 
-            return (acceptedAreas != null ? acceptedAreas.Contains(currentArea) : true) && 
-					acceptedControllers.Contains(currentController) && 
-					acceptedActions.Contains(currentAction) ? $"{cssClass} as-controller" : hiddenClass;
-		}
+            return (acceptedAreas != null ? acceptedAreas.Contains(currentArea) : true) &&
+                    acceptedControllers.Contains(currentController) &&
+                    acceptedActions.Contains(currentAction) ? $"{cssClass} as-controller" : hiddenClass;
+        }
 
         [Obsolete("ActiveExpandContract is deprecated.  Use ActiveClass() with hiddenClass parameter instead.", true)]
         public static string? ActiveExpandContract(this IHtmlHelper htmlHelper, string? area = null, string? controller = null, string? action = null, string? page = null, string? hiddenClass = "hidden", string? visibleClass = "")
@@ -99,7 +100,32 @@ namespace CCNextGen_Template.Helpers
         }
 
 
-		public static Type GetModelType<T>(this IHtmlHelper<T> html) => typeof(T);
+        public static Type GetModelType<T>(this IHtmlHelper<T> html) => typeof(T);
 
-	}
+        public static object FindTotalItemsProperty(PageModel pageModel)
+        {
+            if (pageModel == null)
+                throw new ArgumentNullException(nameof(pageModel));
+
+            var properties = pageModel.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var property in properties)
+            {
+                var propertyValue = property.GetValue(pageModel);
+                if (propertyValue == null)
+                {
+                    continue;
+                }
+
+                var totalItemsProperty = propertyValue.GetType().GetProperty("TotalItems", BindingFlags.Public | BindingFlags.Instance);
+                if (totalItemsProperty != null)
+                {
+                    return totalItemsProperty.GetValue(propertyValue);
+                }
+            }
+
+            return null;
+        }
+    }
+
 }

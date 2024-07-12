@@ -23,7 +23,7 @@
             </form>
             @if (!String.IsNullOrEmpty(search))
             {
-                <a asp-route-perPage="@ViewData["PerPage"]" asp-route-page="@ViewData["Page"]" class="d-block w-100 text-center btn btn-outline-tertiary">View All Results</a>
+                <a asp-route-perPage="@ViewData["PerPage"]" asp-route-page="@ViewData["Page"]" asp-route-page="@ViewData["Page"]" class="d-block w-100 text-center btn btn-outline-tertiary">View All Results</a>
             }
         </div>
     </div>
@@ -31,12 +31,17 @@
 @RenderBody()
 
 @{
-    var totalItemsProperty = ViewData.Model?.GetType().GetProperty("TotalItems");
+    var totalItemsProperty = ViewData.Model?.GetType().GetProperty("TotalItems");    
 }
 
 @if (totalItemsProperty != null)
 {
-    @await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_Pagination.cshtml",ViewData)
+    
+    @await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_Pagination.cshtml", ViewData)
+}
+else if(ViewData.ContainsKey("PageSet") && ViewData.ContainsKey("PerPage"))
+{
+    @await Html.PartialAsync("~/Pages/Shared/LayoutPartials/_PaginationRP.cshtml", ViewData["RPModel"])
 }
 
 @section Scripts {

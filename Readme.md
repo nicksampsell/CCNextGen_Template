@@ -1,4 +1,5 @@
-﻿# CC NextGen Template
+﻿
+# CC NextGen Template
 
 
 ## Note
@@ -11,6 +12,7 @@ Please visit the [Source Repository on Github](https://github.com/nicksampsell/C
 3. Delete or rename the default **_Layout.cshtml** file (this is what the template uses and local files override the template)
 4. Add the configuration items from the section below to your **appsettings.json** file
 5. Add additional partials to add items to the sidebar or top menu based on the options in the sections below.
+6. Delete the default CSS from /wwwroot/css/site.css (it adds extra space to the bottom of the page which affects the layout)
 
 ## Program.cs
 ```
@@ -206,10 +208,11 @@ Pagination in the template requires [Pagination.EntityFrameworkCore.Extensions](
 
 | variable | purpose | suggested default |
 | -- | -- | -- |
-| search | when used in conjunction with search box, keeps value when paging. | "" (empty string) |
-| page | current page number | 1 |
+| search | when used in conjunction with search box, keeps value when paging. | "" (empty string) or String.Empty |
+| page | current page number (MVC ONLY) | 1 |
+| pageSet | current page number (Razor Pages ONLY) | 1 |
 | perPage | how many items per page | 100 |
-| sortBy | what column to sort by | null
+| sortBy | what column to sort by | Primary Key or Timestamp Column
 | desc | whether to sort in descending order | true |
 
 In an MVC controller, an action make look like this:
@@ -233,15 +236,65 @@ public async Task<IActionResult> Index(string search="", int page = 1, int perPa
 }
 ```
 
+In Razor Pages, it works in much the same way.  In your Handlers, pass in the search, page, perPage, sortBy, and desc parameters.  Handle them as usual, and then render them using ViewData.  (This may change in the future to better accommodate Razor Pages best practices, but for now utilize this method).    Your method may look like this:
+
+```
+
+[ViewData]
+public string Search { get; set;} = "";
+[ViewData]
+public int PerPage { get; set;} = 100;
+[ViewData]
+public int PageSet { get; set;} = 1; //Replaces ViewData["Page"] because Page() is a reserved keyword.
+[ViewData]
+public string SortBy { get; set;} = "ColumnName";
+[ViewData]
+public bool Desc { get; set; } = true;
+[ViewData]
+
+
+public async Task OnGetAsync(string search="", int pageSet = 1, int perPage=100, string sortBy = "DefaultColName", bool desc = true)
+{
+
+	//Your code to populate the Razor Pages Model
+
+	Search = serach;
+	PageSet = pageSet;
+	PerPage = perPage;
+	SortBy = sortBy;
+	Desc = desc;
+	
+}
+```
+
 For pagination, it is critical that you include the following items to ensure the pagination links render properly.
 
 **ViewData["PerPage"] = perPage;**
-**ViewData["Page"] = page;**
+**ViewData["Page"] = page;** //used in MVC
+**ViewData["PageSet"] = pageSet;** //used in Razor Pages
 **ViewData["SortBy"] = sortBy;**
 **ViewData["Desc"] = desc;**
 
+#### An Important Note For Razor Pages
+Because of how Razor Pages defines and uses Page Models, you need to define an extra variable to inform the Pagination Partial of the model used for data.  To do this, either in the code-side or in the template size, define a ViewData variable called RPModel and pass in an instance of the data model.
 
+**ViewData["RPModel"] = Model.Department;**
 
+An example page may look like this:
+```
+@page
+@using CCNextGen_Template.Models
+@model CCSO_DeputyCertificationTracking.Pages.Departments.IndexModel
+
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = "SubLayouts/_Index";
+    ViewData["RPModel"] = Model.Department;
+    Layout = "SubLayouts/_Index";
+}
+//... rest of code
+```
 
 #### Enabling Search
 The search box that is part of the SubLayouts/_Index template uses a GET form that sets the content in the search field to a parameter called search, so when pressing the search button, your url will have the following added to it ?search=SEARCH+QUERY+DATA.
@@ -257,7 +310,8 @@ public async Task<IActionResult> Index(string search="", int page = 1, int perPa
 
 	ViewData["Search"] = search;
 	ViewData["PerPage"] = perPage;
-	ViewData["Page"] = page;
+	ViewData["Page"] = page; //MVC Only
+	ViewData["PageSet"] = pageSet //Razor Pages Only
 	ViewData["SortBy"] = sortBy;
 	ViewData["Desc"] = desc;
 	return View(result);
@@ -292,6 +346,62 @@ The sidebar makes use of Bootstrap pills and Material Icons.  Below is an exampl
 	    </a>
 	</li>
 </ul>
+```
+### Status Messages/Alerts
+To use alert messages (for success messages, errors, and warnings) uses the TempData variable (or data attribute) to set the following variables:
+
+| Key | Alert Type | Recommended Use |
+| -- | -- | -- |
+| success | Green Alert Box | Successful actions |
+| error | Red/Pink Alert box | Errors |
+| warning | Orange/Yellow Alert Box | Dangerous actions, Less-Serious Errors.  Notifications |
+| info | Light Blue Alert box | Informational alerts |
+
+Key names also work with the first letter capitalized.  (Success/success, Error/error, etc.)
+
+
+#### To use the Status Messages on Redirects
+In MVC, use the TempData variable
+```
+TempData["success"] = "Your message here";
+TempData["error"] = "Your message here";
+```
+
+In Razor Pages, use the TempData variable or the [TempData] attribute helper..
+```
+TempData["success"] = "Your message here";
+
+[TempData]
+public string Error { get; set; }
+
+public async Task OnGetAsync()
+{
+	if(someCondition)
+	{
+		Error = "I will display in an error message alert box after redirecting.";
+	}
+}
+```
+
+#### To use the Status Messages on the same Page
+Set the message in ViewData.  In MVC or Razor Pages, you can use the ViewData dictionary:
+```
+ViewData["success"] = "Your message here";
+ViewData["info"] = "Another message here";
+```
+
+In Razor pages, you can also use the **[ViewData]** attribute
+```
+[ViewData]
+public string Error { get; set; }
+
+public async Task OnGetAsync()
+{
+	if(someCondition)
+	{
+		Error = "I will display in an error message alert box on the same page.";
+	}
+}
 ```
 
 ### Additional Notes

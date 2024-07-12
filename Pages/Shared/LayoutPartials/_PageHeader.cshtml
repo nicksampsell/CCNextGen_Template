@@ -99,28 +99,66 @@
         }
     </div>
 </header>
-@if (TempData.ContainsKey("success") || TempData.ContainsKey("error") || TempData.ContainsKey("warning"))
+@if (TempData.ContainsKey("success") || 
+    ViewData.ContainsKey("success") || 
+    TempData.ContainsKey("Success") || 
+    ViewData.ContainsKey("Success") || 
+    TempData.ContainsKey("error") || 
+    ViewData.ContainsKey("error") ||
+    TempData.ContainsKey("Error") || 
+    ViewData.ContainsKey("Error") ||
+    TempData.ContainsKey("warning") ||
+    ViewData.ContainsKey("warning") || 
+    TempData.ContainsKey("Warning") ||
+    ViewData.ContainsKey("Warning") || 
+    TempData.ContainsKey("info") ||
+    ViewData.ContainsKey("info") || 
+    TempData.ContainsKey("Info") ||
+    ViewData.ContainsKey("Info"))
 {
     <div class="mb-5">
 
-        @if (TempData.ContainsKey("success"))
+        @if (TempData.ContainsKey("success") || ViewData.ContainsKey("success") || 
+            TempData.ContainsKey("Success") || ViewData.ContainsKey("Success"))
         {
             <div class="alert alert-success">
-                @TempData["success"].ToString()
+                @(TempData["success"]?.ToString() ?? 
+                TempData["Success"]?.ToString() ?? 
+                ViewData["success"]?.ToString() ?? 
+                ViewData["Success"]?.ToString())
             </div>
         }
 
-        @if (TempData.ContainsKey("error"))
+        @if (TempData.ContainsKey("error") || ViewData.ContainsKey("error") || 
+            TempData.ContainsKey("Error") || ViewData.ContainsKey("Error"))
         {
-            <div class="alert alert-error">
-                @TempData["error"].ToString()
+            <div class="alert alert-danger">
+                @(TempData["error"]?.ToString() ?? 
+                TempData["Error"]?.ToString() ?? 
+                ViewData["error"]?.ToString() ?? 
+                ViewData["Error"]?.ToString())
             </div>
         }
 
-        @if (TempData.ContainsKey("warning"))
+        @if (TempData.ContainsKey("warning") || ViewData.ContainsKey("warning") || 
+            TempData.ContainsKey("Warning") || ViewData.ContainsKey("Warning"))
         {
             <div class="alert alert-warning">
-                @TempData["warning"].ToString()
+                @(TempData["warning"]?.ToString() ?? 
+                TempData["Warning"]?.ToString() ?? 
+                ViewData["warning"]?.ToString() ?? 
+                ViewData["Warning"]?.ToString())
+            </div>
+        }
+
+        @if (TempData.ContainsKey("info") || ViewData.ContainsKey("info") || 
+            TempData.ContainsKey("Info") || ViewData.ContainsKey("Info"))
+        {
+            <div class="alert alert-info">
+                @(TempData["info"]?.ToString() ?? 
+                TempData["Info"]?.ToString() ?? 
+                ViewData["info"]?.ToString() ?? 
+                ViewData["Info"]?.ToString())
             </div>
         }
 
