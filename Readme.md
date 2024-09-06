@@ -22,7 +22,8 @@ builder.WebHost.UseWebRoot("wwwroot");
 builder.WebHost.UseStaticWebAssets();
 
 builder.Services.ConfigureOptions(typeof(UIConfigureOptions));
-builder.Services.AddRazorPages(); //if it is not already there
+
+//near the bottom of program.cs
 
 app.MapRazorPages();
 ```
@@ -40,6 +41,7 @@ Add the following items to your _ViewImports.cshtml file
 ```
 @using CCNextGen_Template.Helpers
 @using CCNextGen_Template.Models
+@addTagHelper *, CCNextGen_Template
 ```
 
 ## Appsettings.json
@@ -50,7 +52,9 @@ Add the following to appsettings.json
         "AppShortName": "",
         "ThemeColor": "#00072d",
         "Favicon": "",
-        "Logo": ""
+        "Logo": "",
+        "EnableBlazor": false,
+        "BaseHref": "~/"
     }
 ```
 
@@ -61,6 +65,8 @@ Add the following to appsettings.json
 | ThemeColor | Used to alter color scheme of some browsers | Yes |
 | Favicon | Icon used in bookmarks/title bar.  Defaults to Chemung County Logo if blank | Yes |
 | Logo | Logo used in sidebar | Yes |
+| EnableBlazor | Adds necessary header to enable Blazor components in your application | Yes |
+| BaseHref | Adds url ``<base />`` tag to your header.  Used for Blazor components and if you place your app in a subdirectory. | Yes
 
 
 ## Template Files
@@ -72,6 +78,7 @@ You can create partials with the following names to add content to various areas
 | _Sidebar.cshtml | Left Sidebar | Displays under logo in left sidebar for if the **area** is not set to "admin"
 | _AdminSidebar.cshtml | Left Sidebar | Displays under logo in left sidebar if the **area** is set to "admin"
 | _Topbar.cshtml | Above Main Content | Displays a grey bar above the main content |
+| _Head.cshtml | None | Overrides `<head></head>` section of layout. Prevents default ``<style>`` and ``<script>`` tags from being loaded.  Allows you to define your own styles and to add additional data to the ``<head></head>`` section.
 
 ## Sections
 
@@ -95,6 +102,22 @@ This partial will display the title of the page as well as add a button linking 
 To set the text in the partial, set the following in your view
 
 `ViewData["Title"] = "Page Title"`
+
+If you are using Razor Pages, you can set the link that the page title links to by setting:
+
+``ViewData["PageUrl"] = 'Path/To/Page;``
+
+If this is not set, the page title will be static text.
+
+If you are using MVC, the page header will link to the Index of the controller.  
+
+You can set the page title to be static text by setting:
+
+``ViewData["StaticTitle"] = true;``
+
+The button that displays on the top right-hand side of the Index and Editor pages typically displays the text "Add New" or "Cancel."  You can override this on each page by setting:
+
+``ViewData["ButtonText"] = "Override Button Text";``
 
 To hide the button, set the following
 
@@ -439,3 +462,98 @@ For example, if you want to override the page header, you would create the follo
 		* LayoutPartials
 
 then inside the **LayoutPartials** folder, you would place a copy of the _PageHeader.cshtml file from the original project into this folder (see the [GitHub Repository](https://github.com/nicksampsell/CCNextGen_Template) for the latest source code).
+
+## Helpers
+### Details Tag Helper
+A Tag-Helper has been added to easily display content.  To use, ensure that you have added the following to your ``_ViewImports.cshtml`` page.
+```
+@using CCNextGen_Template.Helpers
+@using CCNextGen_Template.Models
+@addTagHelper *, CCNextGen_Template
+```
+
+The tag is used as follows:
+``<cc-details label="Label Text" value="Display Value" empty="Empty Value"></cc-details>``
+
+| Attribute | Purpose | Required? |
+| -- | -- | -- |
+| label | Title or Label of Piece of Information | Yes
+| value | Data from Database | Yes
+| empty | Text/Data to display if "value" attribute is null or empty | no 
+
+A typical use in MVC may look like this:
+```
+<cc-details label="@Html.DisplayName("Email")" value="@Model.Email" empty="Not Provided"></cc-details>
+```
+
+The resulting HTML is
+```
+<div class="mb-2">
+	<div class="mb-2">Email</div>
+	<strong>fake@email.com</strong>
+</div>
+```
+if the email were null or empty, it would render as follows:
+```
+<div class="mb-2">
+	<div class="mb-2">Cell Phone Number</div>
+	<em class="text-body-secondary" style="font-size: 0.8rem">Not Provided</em>
+</div>
+```
+
+### Enumeration Helpers
+GetDisplayName()
+When you are using an enumeration, you can set a display name using a ``[Display(Name = "")]`` attribute and reference it in your views. Append the helper function ``GetDisplayName()`` to render this.
+
+e.g., 
+```
+ public enum VehicleStatus
+ {
+  [DisplayName("Functioning Properly")]
+     Good,
+     [DisplayName("Damaged")]
+     Damaged,
+     [DisplayName("Out of Service")]
+     OutOfService
+ }
+	
+var vehicle = new Vehicle {
+	Status = VehicleStatus.OutOfService
+};
+
+var toDisplay = vehicle.Status.GetDisplayName(); //will render "Out of Service"
+```
+
+### Active Class
+This class is used mainly to display classes based on the page currently loaded. (It was originally designed to display the .active class on items in the sidebar when the user was in a page in a certain controller).
+
+The class works as follows:
+1. Add the helper to the ``class=""`` attribute of the element you wish to use.
+2. Adjust the parameters to match the page you are on, as well as set the class names to use when a match is made.  The function is as follows:
+```
+@Html.ActiveClass(string? area = null, string? controller = null, string? action = null, string? page = null, string? cssClass = "active", string? hiddenClass = "");
+```
+
+| Parameter | Purpose | Default | Required? | MVC or Razor Pages |
+| -- | -- | -- | -- | -- |
+| area | Set the Area to search for | null | No | MVC |
+| controller | Set the Controller to search for | null | No | MVC |
+| action | Set the Action to search for | null | No | MVC |
+| page | Set the page to search for | null | No | Razor Pages |
+| cssClass | Set the class name to display when a match is found. | active | no | Both |
+| hiddenClass | Set the class name to display when a match is *NOT* found | "" | no | Both |
+	
+Matching works as follows:
+| Area | Controller | Action | Page | Will Match |
+| -- | -- | -- | -- | -- |
+| Yes | Yes | Yes | N/A | Will only match if area, controller, and action are matched in current URL)
+| Yes | Yes | Empty | N/A | Will match if the current URL matches any action in the given area/controller combination.
+| Yes | Empty | Empty | N/A | Will match if the current URL matches any action in the given area.
+| Empty | Yes | Empty | N/A | Will match if the current URL matches any action in the given controller.
+| Empty | Empty | Yes | N/A | Will match if the current URL matches the given action.
+| N/A | N/A | N/A | Yes | Will match only if the current url matches the provided page url.
+
+#### A Special Note for Razor Pages
+Razor pages does not have the ability to match controllers and actions like MVC .  To give similar functionality, you can use the ``/*`` wildcard url in the ``page`` attribute.  For example:
+
+```page="users/*"`` would return the variable for any page that was in the */users/* folders.  ``page="/*"`` then would return true for all pages from the root (this is essentially useless, however).

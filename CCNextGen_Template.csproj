@@ -8,7 +8,7 @@
 		<Authors>Nick Sampsell</Authors>
 		<Company>Chemung County</Company>
     <Description>The bootstrap-based template used by Chemung County for the internal apps turned into a Razor Class Library for easier integration into future proejcts</Description>
-    <Version>1.0.79</Version>
+    <Version>1.0.80</Version>
 		<RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -43,6 +43,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
       <Content Remove="wwwroot\img\twttjrwu.bmp" />
+      <Content Remove="wwwroot\js\site.js" />
       <Content Remove="wwwroot\lib\bootstrap\js\popper.min.js" />
       <Content Remove="_ViewImports.cshtml" />
       <Content Remove="_ViewStart.cshtml" />
@@ -60,6 +61,9 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Helpers\CCDetailsTagHelper.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Update="Helpers\CCExtensions.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -111,6 +115,9 @@
     <EmbeddedResource Update="wwwroot\img\cc_logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\js\site.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Update="wwwroot\lib\bootstrap\css\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -141,6 +148,7 @@
 	  <None Update="Readme.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 

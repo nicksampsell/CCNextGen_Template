@@ -55,3 +55,6 @@ else if(ViewData.ContainsKey("PageSet") && ViewData.ContainsKey("PerPage"))
         }
     </script>
 }
+@section HeadInject {
+    @RenderSection("HeadInject", false)
+}

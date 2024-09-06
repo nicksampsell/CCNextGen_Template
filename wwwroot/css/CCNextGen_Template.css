@@ -18,6 +18,7 @@ html {
 }
 
 body {
+    min-height: 100vh;
     display: flex;
 }
 
@@ -103,4 +104,7 @@ table.table table.table td, table.table table.table th {
 
 .dashboard-links .item:active .card {
     box-shadow: 0.0625rem 0.0625rem 0.125rem inset var(--bs-tertiary-color);
+}
+.clickable {
+    cursor: pointer;
 }
