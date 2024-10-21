@@ -10,6 +10,7 @@ using System.Web;
 
 namespace CCNextGen_Template.Helpers
 {
+
     public static class CCExtensions
     {
         public static string? ActiveClass(this IHtmlHelper htmlHelper, string? area = null, string? controller = null, string? action = null, string? page = null, string? cssClass = "active", string? hiddenClass = "")

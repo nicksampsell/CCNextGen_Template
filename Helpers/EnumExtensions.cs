@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace CCNextGen_Template.Helpers
 {
+    /// <summary>
+    /// Extension methods for Enumerations
+    /// </summary>
     public static class EnumExtensions
     {
+        /// <summary>
+        /// Display name for an enumeration value
+        /// </summary>
         public static string GetDisplayName(this Enum enumValue)
         {
             var val = enumValue.GetType()

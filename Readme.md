@@ -1,4 +1,5 @@
 ﻿
+
 # CC NextGen Template
 
 
@@ -557,3 +558,38 @@ Matching works as follows:
 Razor pages does not have the ability to match controllers and actions like MVC .  To give similar functionality, you can use the ``/*`` wildcard url in the ``page`` attribute.  For example:
 
 ```page="users/*"`` would return the variable for any page that was in the */users/* folders.  ``page="/*"`` then would return true for all pages from the root (this is essentially useless, however).
+
+### Set Pagination View Data (MVC Only)
+This helper ensures that the necessary ```ViewData``` items are set for pagination to work in controllers.
+
+The parameters for the function are as follows:
+```
+this.SetPaginationViewData(search, page, perPage, sortBy, desc, extraData)
+```
+| Parameter| Type | Description | 
+| -- | -- | -- |
+| search | `string` | search query from query string
+| page | `int` | current page number from query string
+| perPage | `int` | number of results to display per page
+| sortBy | `string` | field to sort by
+| desc | `bool` | whether to sort in descending order
+| extraData | `Dictionary<string, object>` | Dictionary of extra ViewData objects
+
+```
+public async Task<IActionResult> Index(string search="", int page = 1, int perPage=100, string sortBy = "ItemId", bool desc = true)
+{
+	//using Pagination.EntityFrameworkCore.Extensions 
+	var results = await _context.FictionalTable.AsPaginationAsync(page, perPage, sortBy, desc); 
+	var allVehicles = await _context.Vehicles.AsNoTracking().ToListAsync(); 
+	
+	// Create a dictionary with any extra data you need to pass 
+	var extraData = new Dictionary<string, object> { { "AllVehicles", allVehicles } };
+	
+	//If you prefer, you could also just do:
+	// ViewData["AllVehicles"] = allVehicles;
+	 
+	// Use the extension method to set ViewData 
+	this.SetPaginationViewData(search, page, perPage, sortBy, desc, extraData); 
+	return View(results);
+}
+```

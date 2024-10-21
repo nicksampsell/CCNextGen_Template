@@ -8,7 +8,7 @@
 		<Authors>Nick Sampsell</Authors>
 		<Company>Chemung County</Company>
     <Description>The bootstrap-based template used by Chemung County for the internal apps turned into a Razor Class Library for easier integration into future proejcts</Description>
-    <Version>1.0.80</Version>
+    <Version>1.0.83</Version>
 		<RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -56,7 +56,7 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.8" />
 		<PackageReference Include="Pagination.EntityFrameworkCore.Extensions" Version="2.5.6" />
 	</ItemGroup>
 
@@ -113,6 +113,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Update="wwwroot\img\cc_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="wwwroot\img\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Update="wwwroot\js\site.js">

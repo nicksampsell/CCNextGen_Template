@@ -5,7 +5,7 @@
     await Html.RenderPartialAsync("~/Pages/Shared/LayoutPartials/_PageHeader.cshtml", ViewData);
 }
 
-<div class="content">
+<div class="@(!string.IsNullOrEmpty((string?)ViewData["ContentClass"]) ? ViewData["ContentClass"] : "content")">
     @RenderBody()
 </div>
 
