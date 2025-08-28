@@ -1,5 +1,6 @@
 ﻿
 
+
 # CC NextGen Template
 
 
@@ -593,3 +594,24 @@ public async Task<IActionResult> Index(string search="", int page = 1, int perPa
 	return View(results);
 }
 ```
+
+### CRUD Actions Tag Helper
+This tag helper renders Edit, Details, and Delete buttons (as links or forms) based on the context of the current controller or Razor Page.
+
+#### Usage
+To use this helper, include it in your view:
+```
+<crud-actions id="@item.Id" controller="Users" show-edit="true" show-details="true" show-delete="true" />
+```
+
+| Parameter| Description| Required | Default
+| -- | -- | -- |--|
+| id | The ID value passed in as route data | Yes | — |
+| controller | The controller name (used for MVC routing) | No | Current route's controller |
+| page-base | Path to Razor Page (used if `use-pages` is true) | No | "/[CurrentController]"
+| use-pages | Use Razor Pages routing instead of MVC | No | false |
+| show-edit | Show the Edit button | No | true |
+| show-details | Show the Details button | No | true |
+| show-delete | Show the Delete button | No | true
+
+

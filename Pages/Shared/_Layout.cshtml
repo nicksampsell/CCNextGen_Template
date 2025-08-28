@@ -28,11 +28,11 @@
         <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="~/lib/select2/css/select2.min.css"/>
         <link rel="stylesheet" href="~/lib/select2/css/select2-bootstrap-5-theme.min.css"/>
-        <link rel="stylesheet" href="~/css/CCNextGen_Template.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/CCNextGen_Template.css"/>
         <link rel="stylesheet" href="@(Configuration.GetValue<string>("TemplateConfiguration:OverrideIconFont", "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"))" />
         
     
-        <link rel="stylesheet" href="/css/site.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="/css/site.css"/>
         @if(Configuration.GetValue<bool>("TemplateConfiguration:UseBaseTag", false))
         {
             <base href="@Configuration.GetValue("TemplateConfiguration:BaseHref","~/")" />
@@ -43,9 +43,11 @@
     @await RenderSectionAsync("HeadInject", required: false)
 
 
-    @if(Configuration.GetValue<bool>("TemplateConfiguration:EnableBlazor", false))
+    @if (Configuration.GetValue<bool>("TemplateConfiguration:EnableBlazor")
+    && ViewContext.ExecutingFilePath?.EndsWith("_Host.cshtml") == true)
     {
         <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)" render-mode="ServerPrerendered" />
+
     }
 
 </head>
