@@ -3,6 +3,22 @@
 @{
     var currentPage = ViewContext.RouteData.Values["page"] as string;
 }
+@functions {
+    public string? GetMessage(string key) =>
+        TempData[key]?.ToString() ?? ViewData[key]?.ToString();
+
+    public bool HasAnyMessage(params string[] keys)
+    {
+        foreach (var key in keys)
+        {
+            if (TempData.ContainsKey(key) || ViewData.ContainsKey(key))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <header class="d-flex flex-row justify-content-between align-items-center  mb-3">
     <div class="grow">
@@ -116,68 +132,39 @@
         }
     </div>
 </header>
-@if (TempData.ContainsKey("success") || 
-    ViewData.ContainsKey("success") || 
-    TempData.ContainsKey("Success") || 
-    ViewData.ContainsKey("Success") || 
-    TempData.ContainsKey("error") || 
-    ViewData.ContainsKey("error") ||
-    TempData.ContainsKey("Error") || 
-    ViewData.ContainsKey("Error") ||
-    TempData.ContainsKey("warning") ||
-    ViewData.ContainsKey("warning") || 
-    TempData.ContainsKey("Warning") ||
-    ViewData.ContainsKey("Warning") || 
-    TempData.ContainsKey("info") ||
-    ViewData.ContainsKey("info") || 
-    TempData.ContainsKey("Info") ||
-    ViewData.ContainsKey("Info"))
+@if(HasAnyMessage("success","error","warning","info"))
 {
     <div class="mb-5">
+        @{
+            bool allowHtmlMessages = ViewData.ContainsKey("allowHTML") ? ((bool?)ViewData["allowHTML"] ?? true) : true;
 
-        @if (TempData.ContainsKey("success") || ViewData.ContainsKey("success") || 
-            TempData.ContainsKey("Success") || ViewData.ContainsKey("Success"))
-        {
-            <div class="alert alert-success">
-                @(TempData["success"]?.ToString() ?? 
-                TempData["Success"]?.ToString() ?? 
-                ViewData["success"]?.ToString() ?? 
-                ViewData["Success"]?.ToString())
-            </div>
+            if(GetMessage("success") is { } success)
+            {
+                <div class="alert alert-success">
+                    @(allowHtmlMessages ? Html.Raw(success) : success)
+                </div>
+            }
+
+            if (GetMessage("error") is { } error)
+            {
+                <div class="alert alert-danger">
+                    @(allowHtmlMessages ? Html.Raw(error) : error)
+                </div>
+            }
+
+            if (GetMessage("warning") is { } warning)
+            {
+                <div class="alert alert-warning">
+                    @(allowHtmlMessages? Html.Raw(warning) : warning)
+                </div>
+            }
+
+            if (GetMessage("info") is { } info)
+            {
+                <div class="alert alert-info">
+                    @(allowHtmlMessages ? Html.Raw(info) : info)
+                </div>
+            }
         }
-
-        @if (TempData.ContainsKey("error") || ViewData.ContainsKey("error") || 
-            TempData.ContainsKey("Error") || ViewData.ContainsKey("Error"))
-        {
-            <div class="alert alert-danger">
-                @(TempData["error"]?.ToString() ?? 
-                TempData["Error"]?.ToString() ?? 
-                ViewData["error"]?.ToString() ?? 
-                ViewData["Error"]?.ToString())
-            </div>
-        }
-
-        @if (TempData.ContainsKey("warning") || ViewData.ContainsKey("warning") || 
-            TempData.ContainsKey("Warning") || ViewData.ContainsKey("Warning"))
-        {
-            <div class="alert alert-warning">
-                @(TempData["warning"]?.ToString() ?? 
-                TempData["Warning"]?.ToString() ?? 
-                ViewData["warning"]?.ToString() ?? 
-                ViewData["Warning"]?.ToString())
-            </div>
-        }
-
-        @if (TempData.ContainsKey("info") || ViewData.ContainsKey("info") || 
-            TempData.ContainsKey("Info") || ViewData.ContainsKey("Info"))
-        {
-            <div class="alert alert-info">
-                @(TempData["info"]?.ToString() ?? 
-                TempData["Info"]?.ToString() ?? 
-                ViewData["info"]?.ToString() ?? 
-                ViewData["Info"]?.ToString())
-            </div>
-        }
-
     </div>
 }

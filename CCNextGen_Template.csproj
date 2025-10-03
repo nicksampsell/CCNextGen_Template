@@ -10,7 +10,7 @@
     <Company>Chemung County</Company>
     <Description>The bootstrap-based template used by Chemung County for internal apps, turned into a Razor Class Library.</Description>
 
-    <Version>1.0.88</Version>
+    <Version>1.0.90</Version>
     <RepositoryUrl>https://github.com/nicksampsell/CCNextGen_Template.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
