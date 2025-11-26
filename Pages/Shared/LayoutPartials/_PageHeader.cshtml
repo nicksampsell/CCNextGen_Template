@@ -1,5 +1,9 @@
 ﻿@using CCNextGen_Template.Helpers
 @using CCNextGen_Template.Models
+@using Microsoft.AspNetCore.Mvc.ViewEngines
+@using Microsoft.AspNetCore.Http
+@inject ICompositeViewEngine Engine
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     var currentPage = ViewContext.RouteData.Values["page"] as string;
 }
@@ -138,32 +142,89 @@
         @{
             bool allowHtmlMessages = ViewData.ContainsKey("allowHTML") ? ((bool?)ViewData["allowHTML"] ?? true) : true;
 
-            if(GetMessage("success") is { } success)
+            @if (Configuration.GetValue<bool>("TemplateConfiguration:UseToasts", false))
             {
-                <div class="alert alert-success">
-                    @(allowHtmlMessages ? Html.Raw(success) : success)
-                </div>
-            }
+                if (GetMessage("success") is { } success)
+                {
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            showToast({
+                                severity: 'success',
+                                summary: 'Success',
+                                detail: '@(allowHtmlMessages? Html.Raw(success) : success)'
+                            });
+                        });
+                    </script>
+                }
 
-            if (GetMessage("error") is { } error)
-            {
-                <div class="alert alert-danger">
-                    @(allowHtmlMessages ? Html.Raw(error) : error)
-                </div>
-            }
+                if (GetMessage("error") is { } error)
+                {
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            showToast({
+                                severity: 'error',
+                                summary: 'error',
+                                detail: '@(allowHtmlMessages? Html.Raw(error) : error)'
+                            });
+                        });
+                    </script>
+                }
 
-            if (GetMessage("warning") is { } warning)
-            {
-                <div class="alert alert-warning">
-                    @(allowHtmlMessages? Html.Raw(warning) : warning)
-                </div>
-            }
+                if (GetMessage("warning") is { } warning)
+                {
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            showToast({
+                                severity: 'warn',
+                                summary: 'warn',
+                                detail: '@(allowHtmlMessages? Html.Raw(warning) : warning)'
+                            });
+                        });
+                    </script>
+                }
 
-            if (GetMessage("info") is { } info)
+                if (GetMessage("info") is { } info)
+                {
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            showToast({
+                                severity: 'info',
+                                summary: 'info',
+                                detail: '@(allowHtmlMessages? Html.Raw(info) : info)'
+                            });
+                        });
+                    </script>
+                }
+            }
+            else
             {
-                <div class="alert alert-info">
-                    @(allowHtmlMessages ? Html.Raw(info) : info)
-                </div>
+                if (GetMessage("success") is { } success)
+                {
+                    <div class="alert alert-success">
+                        @(allowHtmlMessages? Html.Raw(success) : success)
+                    </div>
+                }
+
+                if (GetMessage("error") is { } error)
+                {
+                    <div class="alert alert-danger">
+                        @(allowHtmlMessages? Html.Raw(error) : error)
+                    </div>
+                }
+
+                if (GetMessage("warning") is { } warning)
+                {
+                    <div class="alert alert-warning">
+                        @(allowHtmlMessages? Html.Raw(warning) : warning)
+                    </div>
+                }
+
+                if (GetMessage("info") is { } info)
+                {
+                    <div class="alert alert-info">
+                        @(allowHtmlMessages? Html.Raw(info) : info)
+                    </div>
+                }
             }
         }
     </div>

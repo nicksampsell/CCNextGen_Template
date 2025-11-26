@@ -56,7 +56,8 @@ Add the following to appsettings.json
         "Favicon": "",
         "Logo": "",
         "EnableBlazor": false,
-        "BaseHref": "~/"
+        "BaseHref": "~/",
+		"UseToasts": true
     }
 ```
 
@@ -69,6 +70,7 @@ Add the following to appsettings.json
 | Logo | Logo used in sidebar | Yes |
 | EnableBlazor | Adds necessary header to enable Blazor components in your application | Yes |
 | BaseHref | Adds url ``<base />`` tag to your header.  Used for Blazor components and if you place your app in a subdirectory. | Yes
+| UseToasts | If true, uses toast notifications for success, error, warning, and info messages.  If false, uses alert boxes. | Yes |
 
 
 ## Template Files

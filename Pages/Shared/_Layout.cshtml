@@ -33,6 +33,10 @@
         
     
         <link rel="stylesheet" href="/css/site.css"/>
+        @if (Configuration.GetValue<bool>("TemplateConfiguration:UseToasts", false))
+        {
+            <link rel="stylesheet" type="text/css" href="~/css/toast.css" />
+        }
         @if(Configuration.GetValue<bool>("TemplateConfiguration:UseBaseTag", false))
         {
             <base href="@Configuration.GetValue("TemplateConfiguration:BaseHref","~/")" />
@@ -154,10 +158,15 @@
             }
         </div>
     </div>
+    <div id="server-toast"></div>
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/popper.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @if (Configuration.GetValue<bool>("TemplateConfiguration:UseToasts", false))
+    {
+        <script src="~/js/toast.js"></script>
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
